@@ -1,0 +1,205 @@
+:root {
+  /* 🍓 Core Palette */
+  --color-primary: #e63946;       /* Berry Red */
+  --color-secondary: #ffb703;     /* Citrus Orange */
+  --color-accent: #f1fa8c;        /* Lemon Zest */
+  
+  /* 🥝 Status Colors */
+  --color-success: #2a9d8f;       /* Minty Fresh */
+  --color-warning: #f77f00;       /* Ripe Apricot */
+  --color-error: #d62828;         /* Cherry Crimson */
+
+  /* 🍫 Base Colors */
+  --color-background: #fffbea;    /* Vanilla Cream */
+  --color-surface: #ffffff;       /* Pure Plate White */
+  --color-text: #3d1f00;          /* Rich Cocoa */
+
+  --font-family-base: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+/* Header */
+header {
+  background-color: var(--color-surface);
+  padding: 2rem 0;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+/* Main Contact Container */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+/* Contact Form */
+.contact-form {
+  flex: 1 1 400px;
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--color-primary);
+}
+
+.contact-form label span {
+  color: var(--color-error);
+  margin-left: 0.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border: none;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--color-error);
+}
+
+/* Contact Info Sidebar */
+.contact-info {
+  flex: 1 1 300px;
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.contact-info a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.contact-info a:hover {
+  color: var(--color-surface);
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  text-align: center;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  border-top: 2px solid var(--color-accent);
+}
+
+/* Responsive */
+
+/* Mobile first, so below 600px is default */
+
+/* Tablets */
+@media (min-width: 600px) {
+  header h1 {
+    font-size: 3rem;
+  }
+
+  .contact-container {
+    gap: 4rem;
+  }
+}
+
+/* Desktops */
+@media (min-width: 900px) {
+  .contact-container {
+    flex-wrap: nowrap;
+  }
+
+  .contact-form {
+    padding: 3rem;
+  }
+
+  .contact-info {
+    padding: 3rem;
+  }
+
+  header {
+    padding: 3rem 0;
+  }
+}

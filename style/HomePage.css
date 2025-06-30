@@ -1,0 +1,206 @@
+:root {
+  /* 🍓 Core Palette */
+  --color-primary: #e63946;       /* Berry Red */
+  --color-secondary: #ffb703;     /* Citrus Orange */
+  --color-accent: #f1fa8c;        /* Lemon Zest */
+  
+  /* 🥝 Status Colors */
+  --color-success: #2a9d8f;       /* Minty Fresh */
+  --color-warning: #f77f00;       /* Ripe Apricot */
+  --color-error: #d62828;         /* Cherry Crimson */
+
+  /* 🍫 Base Colors */
+  --color-background: #fffbea;    /* Vanilla Cream */
+  --color-surface: #ffffff;       /* Pure Plate White */
+  --color-text: #3d1f00;          /* Rich Cocoa */
+
+  --font-family-base: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0 0.3rem;
+    padding: 0 0.4rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+  }
+
+  header .userName > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary);
+  }
+
+  header .userName > p {
+    margin-top: 2px;
+    margin-left: 4px;
+    color: var(--color-primary);
+  }
+
+  header .userName > div > img {
+    width: 25px;
+  }
+
+  header .userProfile-img > img {
+    width: 55px;
+    padding: 2px 3px;
+    border-radius: 100px;
+    margin-top: 5px;
+    background-color: var(--color-secondary);
+  }
+
+  /* 🍊 Results Section */
+  .results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding: 15px 25px;
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    color: #ffffff;
+  }
+
+  .results > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .results > div > img {
+    width: 50px;
+  }
+
+  .results > div > p {
+    font-size: large;
+  }
+
+  /* 🍋 Practice More Section */
+  .pratice-more {
+    margin-top: 2rem;
+  }
+
+  .pratice-more > div > div:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: capitalize;
+  }
+
+  .pratice-more > div > div:first-of-type > p {
+    font-size: large;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+
+  .pratice-more > div > div:last-of-type {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding: 15px 25px;
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    color: #ffffff;
+  }
+
+  .pratice-more > div > div:last-of-type > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 40%;
+  }
+  .pratice-more > div > div:last-of-type > div > h1 {
+    font-size: large;
+    margin-right: 30px;
+  }
+
+  .pratice-more > div > div:last-of-type > div > p {
+    font-size: small;
+    margin-top: 5px;
+  }
+
+  .pratice-more > div > div:last-of-type > div > svg {
+    width: 15%;
+    margin-top: 6px;
+  }
+
+  /* 📘 Continue Studying */
+  .continue-studing {
+    margin-top: 2rem;
+  }
+
+  .continue-studing > div > div:first-of-type > h3 {
+    font-size: large;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+
+  .continue-studing > div > a {
+    text-decoration: none;
+    border: none;
+    background-color: var(--color-accent);
+  }
+
+  .continue-studing > div > a > div:last-of-type {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--color-accent);
+    padding: 15px 25px;
+    border-radius: 1rem;
+    background-color: var(--color-accent);
+    color: #3d1f00; /* text on lemon background */
+  }
+
+  .continue-studing > div > a > div:last-of-type > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .continue-studing > div > a > div:last-of-type > svg {
+    width: 8%;
+  }
+
+  /* 🍩 Footer */
+  footer  {
+    border: 2px solid var(--color-accent);
+    border-radius: 0.5rem;
+    padding: 20px 30px;
+    position: fixed;
+    top: 89vh;
+    width: 95%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--color-surface);
+  }
+
+  footer > a  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+  }
+
+  footer > a > svg {
+    width: 40%;
+  }
+}

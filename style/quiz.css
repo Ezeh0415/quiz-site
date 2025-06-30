@@ -1,0 +1,116 @@
+:root {
+  /*  Core Palette */
+  --color-primary: #e63946;       /* Berry Red */
+  --color-secondary: #ffb703;     /* Citrus Orange */
+  --color-accent: #f1fa8c;        /* Lemon Zest */
+  
+  /* Status Colors */
+  --color-success: #2a9d8f;       /* Minty Fresh */
+  --color-warning: #f77f00;       /* Ripe Apricot */
+  --color-error: #d62828;         /* Cherry Crimson */
+
+  /*  Base Colors */
+  --color-background: #fffbea;    /* Vanilla Cream */
+  --color-surface: #ffffff;       /* Pure Plate White */
+  --color-text: #3d1f00;          /* Rich Cocoa */
+
+  --font-family-base: 'Inter', sans-serif;
+}
+
+/*  Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  margin: auto 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+
+   header > a {
+    width: 8%;
+    color: var(--color-secondary);
+   }
+
+  header > p {
+    font-weight: 300;
+    color: var(--color-secondary);
+  }
+
+  .range {
+    margin-top: 1rem;
+  }
+
+  /*  Progress Bar Background */
+  .range > h2 {
+    height: 8px;
+    border-radius: 1rem;
+    background-color: var(--color-accent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /*  Progress Fill */
+  .range > h2 > .rangeWidth {
+    background-color: var(--color-success);
+    height: 100%;
+    width: 10%;
+    border-radius: 1rem;
+    transition: width 0.4s ease-in-out;
+  }
+
+  .range > div {
+    display: flex;
+    margin-top: 5px;
+  }
+
+  .quiz-section {
+    margin-top: 1.5rem;
+    background-color: var(--color-surface);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  #question {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  #answer-buttons > .question-div {
+    text-decoration: none;
+    border: none;
+    margin-top: 2rem;
+  }
+
+  #answer-buttons > .question-div > .question {
+    margin-top: 0.5rem;
+    border: 2px solid var(--color-secondary);
+    padding: 15px 25px;
+    border-radius: 1rem;
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  #answer-buttons > .question-div > .question:hover {
+    background-color: var(--color-primary);
+    transform: scale(1.02);
+  }
+}

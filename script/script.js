@@ -1,159 +1,180 @@
 const questions = [
   {
-    question: "Which planet is known as the Red Planet?",
-    answers: [
-      { ans: "Earth" },
-      { ans: "Mars" },     // correct
-      { ans: "Jupiter" },
-      { ans: "Venus" }
-    ],
-    correct: "Mars"
-  },
-  {
-    question: "What is the capital of France?",
-    answers: [
-      { ans: "Berlin" },
-      { ans: "Madrid" },
-      { ans: "Paris" },     // correct
-      { ans: "Rome" }
-    ],
-    correct: "Paris"
-  },
-  {
-    question: "Which element has the chemical symbol 'O'?",
-    answers: [
-      { ans: "Gold" },
-      { ans: "Oxygen" },    // correct
-      { ans: "Silver" },
-      { ans: "Hydrogen" }
-    ],
-    correct: "Oxygen"
-  },
-  {
-    question: "Who wrote 'Hamlet'?",
-    answers: [
-      { ans: "Charles Dickens" },
-      { ans: "J.K. Rowling" },
-      { ans: "William Shakespeare" },  // correct
-      { ans: "Mark Twain" }
-    ],
-    correct: "William Shakespeare"
-  },
-  {
-    question: "What is the largest mammal?",
-    answers: [
-      { ans: "Elephant" },
-      { ans: "Blue Whale" },  // correct
-      { ans: "Giraffe" },
-      { ans: "Hippopotamus" }
-    ],
-    correct: "Blue Whale"
-  },
-  {
-    question: "How many continents are there?",
-    answers: [
-      { ans: "5" },
-      { ans: "6" },
-      { ans: "7" },    // correct
-      { ans: "8" }
-    ],
-    correct: "7"
-  },
-  {
-    question: "Which language is primarily spoken in Brazil?",
-    answers: [
-      { ans: "Spanish" },
-      { ans: "Portuguese" },   // correct
-      { ans: "English" },
-      { ans: "French" }
-    ],
-    correct: "Portuguese"
-  },
-  {
-    question: "Which gas do plants absorb from the atmosphere?",
-    answers: [
-      { ans: "Oxygen" },
-      { ans: "Nitrogen" },
-      { ans: "Carbon Dioxide" },   // correct
-      { ans: "Hydrogen" }
-    ],
-    correct: "Carbon Dioxide"
-  },
-  {
-    question: "What is the square root of 64?",
+    question: "What is the result of 5 + 3?",
     answers: [
       { ans: "6" },
+      { ans: "8" },     // correct
       { ans: "7" },
-      { ans: "8" },    // correct
       { ans: "9" }
     ],
     correct: "8"
   },
   {
-    question: "Which ocean is the largest?",
+    question: "What is the square root of 49?",
     answers: [
-      { ans: "Atlantic Ocean" },
-      { ans: "Indian Ocean" },
-      { ans: "Pacific Ocean" },   // correct
-      { ans: "Arctic Ocean" }
+      { ans: "6" },
+      { ans: "7" },     // correct
+      { ans: "8" },
+      { ans: "9" }
     ],
-    correct: "Pacific Ocean"
+    correct: "7"
+  },
+  {
+    question: "What is 12 × 3?",
+    answers: [
+      { ans: "36" },    // correct
+      { ans: "30" },
+      { ans: "33" },
+      { ans: "39" }
+    ],
+    correct: "36"
+  },
+  {
+    question: "Which number is a prime number?",
+    answers: [
+      { ans: "9" },
+      { ans: "15" },
+      { ans: "13" },   // correct
+      { ans: "21" }
+    ],
+    correct: "13"
+  },
+  {
+    question: "What is 100 divided by 4?",
+    answers: [
+      { ans: "20" },
+      { ans: "25" },   // correct
+      { ans: "30" },
+      { ans: "40" }
+    ],
+    correct: "25"
+  },
+  {
+    question: "How many degrees are in a right angle?",
+    answers: [
+      { ans: "90" },   // correct
+      { ans: "45" },
+      { ans: "180" },
+      { ans: "60" }
+    ],
+    correct: "90"
+  },
+  {
+    question: "What is 15% of 200?",
+    answers: [
+      { ans: "25" },
+      { ans: "30" },   // correct
+      { ans: "35" },
+      { ans: "40" }
+    ],
+    correct: "30"
+  },
+  {
+    question: "What is the next number in the sequence: 2, 4, 8, 16, ___?",
+    answers: [
+      { ans: "20" },
+      { ans: "24" },
+      { ans: "32" },   // correct
+      { ans: "36" }
+    ],
+    correct: "32"
+  },
+  {
+    question: "What is the value of π (pi) rounded to two decimal places?",
+    answers: [
+      { ans: "3.12" },
+      { ans: "3.14" },  // correct
+      { ans: "3.16" },
+      { ans: "3.18" }
+    ],
+    correct: "3.14"
+  },
+  {
+    question: "If x = 3, what is the value of 2x²?",
+    answers: [
+      { ans: "12" },
+      { ans: "18" },   // correct (2×9)
+      { ans: "6" },
+      { ans: "9" }
+    ],
+    correct: "18"
   }
 ];
 
-
 window.addEventListener("load", () => {
-    const questionDiv = document.getElementById("question");
-    const answersDiv = document.getElementById("answer-buttons");
-    const errorMessage = document.getElementById("error-message");
-    let count = 0;
+  // DOM Elements
+  const questionDiv = document.getElementById("question");
+  const answersContainer = document.querySelector(".question-div");
+  const progressBar = document.querySelector(".rangeWidth");
+  const questionCount = document.querySelector(".mainCount");
+  const totalQuiz = document.querySelector(".total-quiz");
+  const errorMessage = document.getElementById("error-message");
 
-    function loadQuestion() {
-        // Check if we're out of questions
-        if (count >= questions.length) {
-            questionDiv.textContent = "🎉 Quiz Complete!";
-            answersDiv.innerHTML = '';
-            return;
-        }
+  // Quiz State
+  let currentIndex = 0;
+  let progressPercent = 0;
 
-        // Set question text
-        questionDiv.textContent = questions[count].question;
+  // Load a single question
+  function loadQuestion() {
+    totalQuiz.textContent = questions.length;
 
-        // Clear previous answers
-        answersDiv.innerHTML = '';
-
-        // Create new buttons
-        questions[count].answers.forEach((EachAnswer, index) => {
-            const button = document.createElement("button");
-            button.textContent = EachAnswer.ans;
-            button.value = EachAnswer.ans;
-            button.id = `value-${index}`;
-            button.className = "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition m-2";
-
-            button.addEventListener("click", () => {
-                if (button.value === questions[count].correct) {
-                    button.disabled = true;
-                    button.className = "bg-green-500 text-white font-semibold py-2 px-4 rounded m-2";
-                    count++;
-                    setTimeout(() => {
-                        loadQuestion(); // Move to next question
-                    }, 800);
-                } else {
-                    errorMessage.textContent = `⚠️ Wrong answer. Try again.`;
-                    errorMessage.classList.remove("hidden");
-                    button.className = "bg-red-500 text-white font-semibold py-2 px-4 rounded m-2";
-                    setTimeout(() => {
-                        button.className = "bg-blue-500 text-white font-semibold py-2 px-4 rounded m-2";
-                        errorMessage.classList.add("hidden");
-                    }, 1000);
-                }
-            });
-
-            answersDiv.appendChild(button);
-        });
+    if (currentIndex >= questions.length) {
+      questionDiv.textContent = "🎉 Quiz Complete!";
+      answersContainer.innerHTML = "";
+      return;
     }
 
-    loadQuestion(); // Initial load
+    const currentQuestion = questions[currentIndex];
+    questionDiv.textContent = currentQuestion.question;
+    answersContainer.innerHTML = "";
+    errorMessage.textContent = "";
+    errorMessage.classList.add("hidden");
+
+    currentQuestion.answers.forEach((answerObj, index) => {
+      const answerWrapper = document.createElement("div");
+      const answerEl = document.createElement("h1");
+
+      answerEl.textContent = answerObj.ans;
+      answerEl.setAttribute("data-answer", answerObj.ans);
+      answerEl.id = `value-${index}`;
+      answerWrapper.classList.add("question");
+
+      // Answer click handler
+      answerEl.addEventListener("click", () => {
+        const selected = answerEl.getAttribute("data-answer");
+
+        if (selected === currentQuestion.correct) {
+          progressPercent += 10;
+          progressBar.style.width = `${progressPercent}%`;
+          questionCount.textContent = currentIndex + 1; // Next question index
+          currentIndex++;
+          setTimeout(loadQuestion, 800);
+        } else {
+          showError(answerEl);
+        }
+      });
+
+      answerWrapper.appendChild(answerEl);
+      answersContainer.appendChild(answerWrapper);
+    });
+  }
+
+  function showError(element) {
+    errorMessage.textContent = `⚠️ Wrong answer. Try again.`;
+    errorMessage.classList.remove("hidden");
+
+    element.className = "bg-red-500 text-white font-semibold py-2 px-4 rounded m-2";
+
+    setTimeout(() => {
+      element.className = "bg-blue-500 text-white font-semibold py-2 px-4 rounded m-2";
+      errorMessage.classList.add("hidden");
+    }, 1000);
+  }
+
+  // Start Quiz
+  loadQuestion();
 });
+
+
 
 
